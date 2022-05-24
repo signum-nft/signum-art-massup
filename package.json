@@ -2,6 +2,7 @@
   "name": "@signumart/massup",
   "version": "1.0.0-alpha",
   "description": "Automate the upload of your https://signumart.io NFT collectibles.",
+  "private": false,
   "main": "./dist/app.js",
   "bin": {
     "signumart-massup": "./index.js"
