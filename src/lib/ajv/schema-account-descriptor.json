@@ -1,0 +1,125 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "accountDescriptor",
+  "type": "object",
+  "title": "The Creator's account descriptor",
+  "description": "This is the description of an creator's account",
+  "default": {},
+  "examples": [
+    {
+      "nm": "MasterArtist",
+      "av": {
+        "QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR": "image/gif"
+      },
+      "bg": {
+        "QmUFc4dyX7TJn5dPxp8CrcDeedoV18owTBUWApYMuF6Koc": "image/jpeg"
+      },
+      "si": {
+        "QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR": "image/jpeg"
+      },
+      "ds": "I just do digital master art pieces",
+      "hp": "https://masterpiece.art",
+      "tw": "https://twitter.com/masterart666",
+      "sc": [
+        "https://discord.gg/ZGHgCyW4",
+        "https://t.me/@masterart666",
+        "https://www.youtube.com/channel/UC9EHkVX5F2qQxoUYb07q1rQ"
+      ]
+    }
+  ],
+  "required": ["nm", "av", "bg", "ds", "tw"],
+  "properties": {
+    "nm": {
+      "$id": "#/properties/nm",
+      "type": "string",
+      "title": "The creators name",
+      "description": "This is the artists name",
+      "default": "",
+      "examples": ["MasterArtist"]
+    },
+    "av": {
+      "$id": "#/properties/av",
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 1,
+      "title": "The link to the avatar stored on IPFS",
+      "description": "It's an IPFS CID with it respective mime type",
+      "default": {},
+      "examples": [
+        {
+          "QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR": "image/webp"
+        }
+      ]
+    },
+    "si": {
+      "$id": "#/properties/si",
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 1,
+      "title": "The link to the image used for social media sharing stored on IPFS",
+      "description": "It's an IPFS CID with it respective mime type",
+      "default": {},
+      "examples": [
+        {
+          "QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR": "image/webp"
+        }
+      ]
+    },
+    "bg": {
+      "$id": "#/properties/bg",
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 1,
+      "title": "The link to the background stored on IPFS",
+      "description": "It's an IPFS CID with it respective mime type",
+      "default": {},
+      "examples": [
+        {
+          "QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR": "image/gif"
+        }
+      ]
+    },
+    "ds": {
+      "$id": "#/properties/ds",
+      "type": "string",
+      "title": "The description",
+      "maxLength": 384,
+      "description": "A more detailed description about this account",
+      "default": "",
+      "examples": ["I just do digital master art pieces"]
+    },
+    "hp": {
+      "$id": "#/properties/hp",
+      "type": "string",
+      "title": "The home page schema",
+      "description": "The URL to the creators home page",
+      "default": "",
+      "examples": ["https://masterpiece.art"]
+    },
+    "tw": {
+      "$id": "#/properties/tw",
+      "type": "string",
+      "pattern": "^https://twitter\\..+/.+$",
+      "title": "The twitter account",
+      "description": "A creator must have a twitter account to be able to verify him",
+      "default": "",
+      "examples": ["https://twitter.com/masterart666"]
+    },
+    "sc": {
+      "$id": "#/properties/sc",
+      "type": "array",
+      "title": "The lst of further social media links",
+      "maxItems": 8,
+      "description": "The creator may add arbitrary social media Urls here",
+      "default": [],
+      "examples": [
+        ["https://discord.gg/ZGHgCyW4", "https://t.me/@masterart666"]
+      ],
+      "items": {
+        "$id": "#/properties/sc/items",
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,4 @@
+name,description,symbol,edition,royalties,identifier,image1,image2,image3,attribute1,attribute2,attribute3,attribute4,attribute5,attribute6,attribute7,attribute8,listingMode,price,offerPrice,auctionEnd
+Awesome NFT #1,This is the most valuable NFT ever,AWESOME,Summer,10,1,c:\awesomeCollection\00001-1.jpg,c:\awesomeCollection\00001-2.jpg,,key1:value1,key2:value2,key3:value3,,,,,,OnAuction,1000,2000,2022-05-27T14:54:00.781Z
+Awesome NFT #2,This is the most valuable NFT ever,AWESOME,Summer,10,2,c:\awesomeCollection\00002-1.jpg,c:\awesomeCollection\00002-2.jpg,,key1:value1,key2:value2,key3:value3,,,,,,NotForSale,0,0,
+Awesome NFT #3,This is the most valuable NFT ever,AWESOME,Summer,10,3,c:\awesomeCollection\00003-1.jpg,c:\awesomeCollection\00003-2.jpg,,key1:value1,key2:value2,key3:value3,,,,,,FixedPrice,2000,0,

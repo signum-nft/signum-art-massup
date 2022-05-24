@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "nftDescriptorRef",
+  "type": "object",
+  "title": "The NFTs descriptor reference",
+  "description": "Due to space limitation on an NFTs description field, the data is stored in IPFS and referenced by this structure",
+  "default": {},
+  "examples": [
+    {
+      "version": 1,
+      "descriptor": "Qm...."
+    }
+  ],
+  "required": ["version", "descriptor"],
+  "properties": {
+    "version": {
+      "$id": "#/properties/version",
+      "type": "integer",
+      "title": "The version number",
+      "description": "An incremental number to identify the versions descriptor",
+      "default": 1,
+      "examples": [1]
+    },
+    "descriptor": {
+      "$id": "#/properties/descriptor",
+      "type": "string",
+      "title": "The descriptor schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": ["Qm...."]
+    }
+  },
+  "additionalProperties": false
+}

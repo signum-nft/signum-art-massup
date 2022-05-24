@@ -1,0 +1,183 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/object1652475874.json",
+  "title": "Root",
+  "type": "object",
+  "required": [
+    "name",
+    "description",
+    "royalties",
+    "image1",
+    "listingMode",
+    "price"
+  ],
+  "properties": {
+    "name": {
+      "$id": "#root/name",
+      "title": "Name",
+      "type": "string",
+      "default": "",
+      "minLength": 4,
+      "maxLength": 32,
+      "examples": ["Awesome NFT #1"],
+      "pattern": "^.*$"
+    },
+    "description": {
+      "$id": "#root/description",
+      "title": "Description",
+      "type": "string",
+      "minLength": 16,
+      "maxLength": 512,
+      "default": "",
+      "examples": ["This is the most valuable NFT ever"],
+      "pattern": "^.*$"
+    },
+    "symbol": {
+      "$id": "#root/symbol",
+      "title": "Symbol",
+      "type": "string",
+      "default": "",
+      "maxLength": 16,
+      "examples": ["AWESOME"],
+      "pattern": "^.*$"
+    },
+    "edition": {
+      "$id": "#root/edition",
+      "title": "Edition",
+      "type": "string",
+      "default": "",
+      "maxLength": 24,
+      "examples": ["Summer"],
+      "pattern": "^.*$"
+    },
+    "royalties": {
+      "$id": "#root/royalties",
+      "title": "Royalties",
+      "type": "number",
+      "default": 0,
+      "maximum": 25,
+      "examples": [0, 5, 10]
+    },
+    "identifier": {
+      "$id": "#root/identifier",
+      "title": "Identifier",
+      "type": "integer",
+      "default": "",
+      "examples": [1]
+    },
+    "image1": {
+      "$id": "#root/image1",
+      "title": "Image1",
+      "type": "string",
+      "default": "",
+      "examples": ["c:\\awesomeCollection\\00001-1.jpg"],
+      "pattern": "^.*$"
+    },
+    "image2": {
+      "$id": "#root/image2",
+      "title": "Image2",
+      "type": "string",
+      "default": "",
+      "examples": ["c:\\awesomeCollection\\00001-2.jpg"],
+      "pattern": "^.*$"
+    },
+    "image3": {
+      "$id": "#root/image3",
+      "title": "Image3",
+      "type": "string",
+      "default": "",
+      "examples": [""],
+      "pattern": "^.*$"
+    },
+    "attribute1": {
+      "$id": "#root/attribute1",
+      "title": "Attribute1",
+      "type": "string",
+      "default": "",
+      "examples": ["key1:value1"],
+      "pattern": "^$|^.*:.*$"
+    },
+    "attribute2": {
+      "$id": "#root/attribute2",
+      "title": "Attribute2",
+      "type": "string",
+      "default": "",
+      "examples": ["key2:value2"],
+      "pattern": "^$|^.*:.*$"
+    },
+    "attribute3": {
+      "$id": "#root/attribute3",
+      "title": "Attribute3",
+      "type": "string",
+      "default": "",
+      "examples": ["key3:value3"],
+      "pattern": "^$|^.*:.*$"
+    },
+    "attribute4": {
+      "$id": "#root/attribute4",
+      "title": "Attribute4",
+      "type": "string",
+      "default": "",
+      "pattern": "^$|^.*:.*$"
+    },
+    "attribute5": {
+      "$id": "#root/attribute5",
+      "title": "Attribute5",
+      "type": "string",
+      "default": "",
+      "pattern": "^$|^.*:.*$"
+    },
+    "attribute6": {
+      "$id": "#root/attribute6",
+      "title": "Attribute6",
+      "type": "string",
+      "default": "",
+      "pattern": "^$|^.*:.*$"
+    },
+    "attribute7": {
+      "$id": "#root/attribute7",
+      "title": "Attribute7",
+      "type": "string",
+      "default": "",
+      "pattern": "^$|^.*:.*$"
+    },
+    "attribute8": {
+      "$id": "#root/attribute8",
+      "title": "Attribute8",
+      "type": "string",
+      "default": "",
+      "pattern": "^$|^.*:.*$"
+    },
+    "listingMode": {
+      "$id": "#root/listingMode",
+      "title": "Listingmode",
+      "type": "string",
+      "enum": ["OnAuction", "NotForSale", "FixedPrice"],
+      "default": "",
+      "examples": ["OnAuction"]
+    },
+    "price": {
+      "$id": "#root/price",
+      "title": "Price",
+      "type": "number",
+      "default": "",
+      "examples": [1000]
+    },
+    "offerPrice": {
+      "$id": "#root/offerPrice",
+      "title": "Offerprice",
+      "type": "integer",
+      "default": "",
+      "examples": [2000.3]
+    },
+    "auctionEnd": {
+      "$id": "#root/auctionEnd",
+      "title": "Auctionend",
+      "type": "string",
+      "default": "",
+      "examples": ["2022-05-16T21:02:24Z"],
+      "pattern": "^$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(.\\d{3})?Z?$"
+    }
+  }
+}

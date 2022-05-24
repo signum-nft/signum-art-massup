@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "collectionDescriptor",
+  "type": "object",
+  "title": "The collection tracker message",
+  "description": "This is the on-chain message to track collections",
+  "default": {},
+  "examples": [
+    {
+      "nc": "Supernatural Celestials",
+      "si": { "QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR": "image/jpeg" },
+      "bg": { "QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR": "image/jpeg" },
+      "ds": "Supernatural celestials is a collection about fictional individuals which own extraordinary powers",
+      "hp": "https://supernatural-celestials.art",
+      "sc": "https://twitter.com/supcels42"
+    }
+  ],
+  "required": ["nc", "bg", "ds"],
+  "properties": {
+    "nc": {
+      "$id": "#/properties/nc",
+      "type": "string",
+      "title": "The collections Name",
+      "maxLength": 32,
+      "description": "The name of the collection",
+      "default": "",
+      "examples": ["Supernatural Celestials"]
+    },
+    "si": {
+      "$id": "#/properties/si",
+      "type": "object",
+      "title": "The social media background image",
+      "description": "An IPFS hash to the image shared on social media with its related MIME Type",
+      "default": "",
+      "minProperties": 1,
+      "maxProperties": 1,
+      "examples": [
+        { "QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR": "image/jpeg" },
+        {
+          "bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi": "application/x-blender"
+        }
+      ]
+    },
+    "bg": {
+      "$id": "#/properties/bg",
+      "type": "object",
+      "title": "The background image",
+      "description": "An IPFS hash to the background image with its related MIME Type",
+      "default": "",
+      "minProperties": 1,
+      "maxProperties": 1,
+      "examples": [
+        { "QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR": "image/jpeg" },
+        {
+          "bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi": "application/x-blender"
+        }
+      ]
+    },
+    "ds": {
+      "$id": "#/properties/ds",
+      "type": "string",
+      "title": "The description",
+      "maxLength": 384,
+      "description": "An extensive description of this collection",
+      "default": "",
+      "examples": [
+        "Supernatural celestials is a collection about fictional individuals which own extraordinary powers"
+      ]
+    },
+    "hp": {
+      "$id": "#/properties/hp",
+      "type": "string",
+      "maxLength": 128,
+      "title": "The Homepage URL",
+      "description": "A valid URL to the collections home page",
+      "default": "",
+      "examples": ["https://supernatural-celestials.art"]
+    },
+    "sc": {
+      "$id": "#/properties/sc",
+      "type": "string",
+      "maxLength": 128,
+      "title": "Social Media Link",
+      "description": "A link to any social media channel",
+      "default": "",
+      "examples": ["https://twitter.com/supcels42", "https://t.me/supcels42"]
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,3 @@
+name,description,symbol,edition,royalties,identifier,image1,image2,image3,attribute1,attribute2,attribute3,attribute4,attribute5,attribute6,attribute7,attribute8,listingMode,price,offerPrice,auctionEnd
+Awesome NFT #6,This is the most valuable NFT ever,AWESOME,Summer,10,6,/home/ohager/Desktop/massup_test_data/6.png,,,,,,,,,,,FixedPrice,,0,
+Awesome NFT #7,This is the most valuable NFT ever,AWESOME,Summer,10,7,/home/ohager/Desktop/massup_test_data/7.png,,,,,,,,,,,OnAuction,500,1100,

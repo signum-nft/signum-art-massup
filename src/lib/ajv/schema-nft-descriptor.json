@@ -1,0 +1,168 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "nftDescriptor",
+  "type": "object",
+  "title": "The NFT descriptor schema",
+  "description": "This structure is referenced by an NFTs description and stored in IPFS",
+  "default": {},
+  "examples": [
+    {
+      "version": 1,
+      "name": "MrAwesome",
+      "title": "The strange Mr. Awesome gets you all",
+      "description": "MrAwesome is a strange individual that lives in the outer celestial rims. He is a super natural with sensorial access to the folded dimensions within a gluon",
+      "collectionId": "12999062285468273830",
+      "edition": "celestials",
+      "identifier": 42,
+      "symbol": "CAWE",
+      "attributes": [
+        {
+          "key1": "value1"
+        },
+        {
+          "key2": "value2"
+        }
+      ],
+      "media": [
+        {
+          "social": "Qm12234...",
+          "thumb": "Qm12234...",
+          "Qm78364....": "image/png"
+        },
+        {
+          "social": "QmAB65342...",
+          "thumb": "QmAB65342...",
+          "Qm908765....": "image/jpeg"
+        }
+      ]
+    }
+  ],
+  "required": ["version", "name", "title", "description", "media"],
+  "properties": {
+    "version": {
+      "$id": "#/properties/version",
+      "type": "integer",
+      "title": "The version number",
+      "description": "An incremental number to identify the versions descriptor",
+      "default": 1,
+      "examples": [1]
+    },
+    "name": {
+      "$id": "#/properties/name",
+      "type": "string",
+      "title": "NFT name",
+      "maxLength": 32,
+      "description": "Just the name",
+      "default": "",
+      "examples": ["MrAwesome"]
+    },
+    "title": {
+      "$id": "#/properties/title",
+      "type": "string",
+      "title": "NFT title",
+      "maxLength": 128,
+      "description": "This can be an additional title or subtitle",
+      "default": "",
+      "examples": ["The strange Mr. Awesome gets you all"]
+    },
+    "description": {
+      "$id": "#/properties/description",
+      "type": "string",
+      "title": "NFT description",
+      "description": "A longer description to explain more about this NFT",
+      "default": "",
+      "examples": [
+        "MrAwesome is a strange individual that lives in the outer celestial rims. He is a super natural with sensorial access to the folded dimensions within a gluon"
+      ]
+    },
+    "collectionId": {
+      "$id": "#/properties/collectionId",
+      "type": "string",
+      "title": "NFT Collection Id",
+      "pattern": "^$|^\\d+$",
+      "maxLength": 24,
+      "description": "This is references the optional collection this NFT belongs to",
+      "default": "",
+      "examples": ["12999062285468273830"]
+    },
+    "edition": {
+      "$id": "#/properties/edition",
+      "type": "string",
+      "title": "NFT Edition",
+      "description": "Some descriptor to tag an edition",
+      "default": "",
+      "examples": ["celestials"]
+    },
+    "identifier": {
+      "$id": "#/properties/identifier",
+      "type": "integer",
+      "title": "An numeric identifier for the NFTs",
+      "description": "An optional number identifing this NFT within its creators context",
+      "default": 0,
+      "examples": [42]
+    },
+    "symbol": {
+      "$id": "#/properties/symbol",
+      "type": "string",
+      "title": "A symbol",
+      "description": "Can be some a ticker like symbol or whatever for this NFT",
+      "default": "",
+      "examples": ["CAWE"]
+    },
+    "attributes": {
+      "$id": "#/properties/attributes",
+      "type": "array",
+      "title": "An NFTs attributes",
+      "maxItems": 8,
+      "description": "NFTs can have attributes, which can help to identify parts of the NFTs content, i.e. fruit, head, machine",
+      "default": [],
+      "examples": [
+        [
+          {
+            "background": "dark"
+          },
+          {
+            "supernatural": "gluon"
+          },
+          {
+            "head": "swollen"
+          }
+        ]
+      ],
+      "items": {
+        "$id": "#/properties/attributes/items",
+        "type": "object",
+        "minProperties": 1,
+        "maxProperties": 1
+      }
+    },
+    "media": {
+      "$id": "#/properties/media",
+      "type": "array",
+      "title": "The attached media files",
+      "description": "NFTs reference at least one media file",
+      "default": [],
+      "examples": [
+        [
+          {
+            "social": "Qm12234...",
+            "thumb": "Qm12234...",
+            "Qm78364....": "image/png"
+          },
+          {
+            "social": "QmAB65342...",
+            "thumb": "QmAB65342...",
+            "Qm908765....": "image/jpeg"
+          }
+        ]
+      ],
+      "items": {
+        "$id": "#/properties/media/items",
+        "type": "object",
+        "minProperties": 3,
+        "maxProperties": 3
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,7 @@
+.idea/
+.husky/
+src/
+coverage/
+local_tests/
+profile.dat
+*.tgz
