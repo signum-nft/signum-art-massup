@@ -167,7 +167,7 @@ export class CsvService {
       encoding: "utf-8",
     }).pipe(
       parse({
-        delimiter: ",",
+        delimiter: [",", ";"],
         trim: true,
         columns: true,
       })
