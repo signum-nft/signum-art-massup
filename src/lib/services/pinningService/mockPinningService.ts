@@ -7,4 +7,8 @@ export class MockPinningService implements PinningService {
     await sleep(250);
     return randomUUID();
   }
+
+  testAuthentication(): Promise<boolean> {
+    return Promise.resolve(true);
+  }
 }

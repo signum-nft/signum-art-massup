@@ -7,19 +7,38 @@ import fetch from "node-fetch";
 import pThrottle from "p-throttle";
 
 export class NftStoragePinningService implements PinningService {
-  constructor(private jwtToken: string) {}
+  private readonly endpoint: string;
+  constructor(private jwtToken: string) {
+    this.endpoint = "https://api.nft.storage";
+  }
 
-  async pinFile(filePath: string, metadata: unknown): Promise<string> {
+  async testAuthentication(): Promise<boolean> {
+    try {
+      const response = await fetch(`${this.endpoint}/?limit=1`, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${this.jwtToken}`,
+        },
+      });
+
+      return response.ok;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  async pinFile(filePath: string): Promise<string> {
     const pin = async () => {
       try {
-        const endpoint = "https://api.nft.storage/upload";
         const file = readFileSync(filePath);
         const filename = basename(filePath);
         const contentType = filename.endsWith(".json")
           ? "application/json"
           : "image/*";
 
-        const response = await fetch(endpoint, {
+        const url = `${this.endpoint}/upload`;
+        const response = await fetch(url, {
           method: "POST",
           body: file,
           headers: {
@@ -30,7 +49,7 @@ export class NftStoragePinningService implements PinningService {
         });
 
         if (!response.ok) {
-          throw new HttpError(endpoint, response.status, response.statusText, {
+          throw new HttpError(url, response.status, response.statusText, {
             filename,
           });
         }

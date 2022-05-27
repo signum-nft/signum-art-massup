@@ -1,5 +1,9 @@
 import inquirer from "inquirer";
 import { Networks } from "@lib/networks";
+import { PinataPinningService } from "@lib/services/pinningService/pinataPinningService";
+import { NftStoragePinningService } from "@lib/services/pinningService/nftStoragePinningService";
+import { PinningService } from "@lib/services/pinningService/pinningService";
+import { PinningServiceFactory } from "@lib/services/pinningService";
 
 interface Answers {
   pinningService: "Pinata" | "NFT.Storage";
@@ -50,11 +54,29 @@ export const promptPinning = async () => {
       choices: ["Pinata", "NFT.Storage"],
       name: "pinningService",
     },
-
     {
       type: "input",
       message: "Please enter your Pinning API Key (JWT):",
       name: "pinningKey",
+      validate(pinningKey: string, answers: Answers) {
+        return new Promise((resolve, reject) => {
+          let service;
+          if (answers.pinningService === "Pinata") {
+            service = new PinataPinningService(pinningKey);
+          } else if (answers.pinningService === "NFT.Storage") {
+            service = new NftStoragePinningService(pinningKey);
+          } else {
+            return reject("WTF?");
+          }
+          service.testAuthentication().then((result) => {
+            if (result) {
+              resolve(true);
+            } else {
+              resolve("Invalid Key");
+            }
+          });
+        });
+      },
     },
   ]);
 };

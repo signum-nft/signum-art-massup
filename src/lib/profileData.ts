@@ -87,6 +87,7 @@ export class ProfileData {
       Account: this.address,
       Name: this.name,
       Description: this.description,
+      PinningService: this.pinningService,
     });
   }
 }

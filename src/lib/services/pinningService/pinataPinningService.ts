@@ -12,10 +12,20 @@ export class PinataPinningService implements PinningService {
   constructor(private jwtToken: string) {
     this.http = HttpClientFactory.createHttpClient("https://api.pinata.cloud", {
       headers: {
+        Authorization: `Bearer ${jwtToken}`,
         Accept: "application/json",
         "Content-Type": "application/json",
       },
     });
+  }
+
+  async testAuthentication(): Promise<boolean> {
+    try {
+      await this.http.get("/data/testAuthentication");
+      return true;
+    } catch (error) {
+      return false;
+    }
   }
 
   async pinFile(filePath: string, metadata: unknown): Promise<string> {
