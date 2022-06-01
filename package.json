@@ -1,6 +1,6 @@
 {
   "name": "@signumart/massup",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0-beta",
   "description": "Automate the upload of your https://signumart.io NFT collectibles.",
   "private": false,
   "main": "./dist/app.js",
@@ -24,6 +24,7 @@
     "csv": "^6.0.5",
     "date-fns": "^2.28.0",
     "dotenv": "^16.0.0",
+    "env-paths": "^2.2.1",
     "form-data": "^4.0.0",
     "fs-extra": "^10.0.1",
     "inquirer": "^8.2.2",

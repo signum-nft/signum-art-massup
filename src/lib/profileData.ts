@@ -1,5 +1,10 @@
-import path from "path";
-import { pathExists, remove, writeFile, readFile } from "fs-extra";
+import {
+  pathExists,
+  remove,
+  writeFile,
+  readFile,
+  ensureFileSync,
+} from "fs-extra";
 import { deriveKey } from "@lib/deriveKey";
 import {
   decryptAES,
@@ -8,8 +13,10 @@ import {
   Keys,
 } from "@signumjs/crypto";
 import { Address } from "@signumjs/core";
+import envPaths from "env-paths";
 
-const userDataPath = path.join(__dirname, "../../", "profile.dat");
+const userDataPath = envPaths("signumart-massup-profile").data;
+ensureFileSync(userDataPath);
 
 export class ProfileData {
   public seed = "";
