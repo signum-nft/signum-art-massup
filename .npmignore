@@ -6,3 +6,7 @@ local_tests/
 profile.dat
 *.log
 *.tgz
+*.csv
+tsconfig.json
+tsconfig.prod.json
+jest.config.js

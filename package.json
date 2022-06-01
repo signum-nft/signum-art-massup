@@ -1,15 +1,17 @@
 {
   "name": "@signumart/massup",
-  "version": "1.0.0-beta",
+  "version": "1.0.1-beta",
   "description": "Automate the upload of your https://signumart.io NFT collectibles.",
   "private": false,
+  "engines": {
+    "node": "16"
+  },
   "main": "./dist/app.js",
   "bin": {
     "signumart-massup": "./index.js"
   },
   "dependencies": {
     "@pinata/sdk": "^1.1.25",
-    "@signumart/massup": "file:signumart-massup-1.0.0-beta.tgz",
     "@signumjs/core": "^1.0.0-rc.17",
     "@signumjs/crypto": "^1.0.0-rc.17",
     "@signumjs/http": "^1.0.0-rc.17",

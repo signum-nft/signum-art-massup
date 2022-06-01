@@ -105,8 +105,6 @@ dist
 
 #custom
 .idea
-profile.json
-profile.dat
 test*
 local_tests
 
