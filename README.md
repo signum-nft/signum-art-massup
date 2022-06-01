@@ -4,6 +4,8 @@
 
 Command line based tool to automate minting of collections with dozens, hundreds or thousands of NFTs for [Signum NFT Platform](https://signumart.io)
 
+![signumart logo small](https://user-images.githubusercontent.com/3920663/171498534-ef94cdbd-edae-4b63-be73-6028c87813e5.png)
+
 ### Installation
 
 `npm i @signumart/massup -g`
@@ -59,6 +61,8 @@ thumbnails, meta data etc on your machine and finally you start the automation f
 Full documentation is available [here](https://docs.signum.network/nftportal/mass-upload-of-nfts)
 
 ---
+
+![workflow](https://archbee.imgix.net/l2AIpSUU6srSQmG1-K2bb/aY7IqX5LMA4q8hrmrqsKY_image.png?auto=format&ixlib=react-9.1.1&w=1174&h=894&dpr=1&q=75)
 
 ## Before you start
 
