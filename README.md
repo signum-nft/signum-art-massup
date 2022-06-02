@@ -1,6 +1,7 @@
 # Signum Art Mass Upload Tool
 
-![node-current](https://img.shields.io/node/v/@signumart/massup)
+![node-current](https://img.shields.io/node/v/@signumart/massup?style=for-the-badge)
+![npm (scoped)](https://img.shields.io/npm/v/@signumart/massup?style=for-the-badge)
 
 Command line based tool to automate minting of collections with dozens, hundreds or thousands of NFTs for [Signum NFT Platform](https://signumart.io)
 
