@@ -17,8 +17,33 @@ interface ProfileAnswers {
   confirmedPin: string;
 }
 
+let pinRetrialCount = 0;
+
 export const promptProfile = async () => {
   return inquirer.prompt<ProfileAnswers>([
+    {
+      type: "password",
+      message: "Please enter a personal PIN first to secure your secrets:",
+      name: "pin",
+    },
+    {
+      type: "password",
+      message: "Please confirm your PIN:",
+      name: "confirmedPin",
+      validate(input: any, answers: ProfileAnswers) {
+        const matchesPin = input === answers.pin;
+        if (matchesPin) return true;
+
+        ++pinRetrialCount;
+        if (pinRetrialCount >= 3) {
+          setTimeout(() => {
+            process.exit(-1);
+          }, 500);
+          return "Too many trials - Stopping";
+        }
+        return "PINs do not match";
+      },
+    },
     {
       type: "list",
       message: "Please select a network:",
@@ -29,19 +54,6 @@ export const promptProfile = async () => {
       type: "input",
       message: "Please enter your passphrase:",
       name: "seed",
-    },
-    {
-      type: "password",
-      message: "Please enter a personal PIN to secure your secrets:",
-      name: "pin",
-    },
-    {
-      type: "password",
-      message: "Please confirm your PIN:",
-      name: "confirmedPin",
-      validate(input: any, answers: ProfileAnswers) {
-        return input === answers.pin ? true : "PINs do not match";
-      },
     },
   ]);
 };

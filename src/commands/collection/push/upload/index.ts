@@ -10,7 +10,7 @@ import { Filenames } from "@lib/constants";
 import { FileLoggingService } from "@lib/services/loggingService";
 import { pinImageFiles } from "./pinImageFiles";
 import { mintNft } from "./mintNft";
-import { Presets, SingleBar, MultiBar } from "cli-progress";
+import { Presets, MultiBar } from "cli-progress";
 import { pinMetaData } from "./pinMetaData";
 import { loadProgress, persistProgress } from "../../progress";
 import { isImage } from "@commands/collection/isImage";
@@ -42,7 +42,7 @@ export async function upload(args: UploadArgs): Promise<UploadStats> {
     ledgerService,
     logger,
   } = args;
-  let stats: UploadStats = {
+  const stats: UploadStats = {
     createdNfts: 0,
     uploadedFiles: 0,
     paidSigna: Amount.Zero(),

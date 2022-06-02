@@ -33,7 +33,7 @@ async function withProfile(fn: (profile: ProfileData) => void | Promise<void>) {
     return fn(profileData);
   } catch (e: any) {
     console.warn(
-      "Could not load any Profile. Did you initialize your Profile with [profile init]?"
+      "Could not load the profile. Is your PIN correct? Did you initialize your Profile with [profile init]?"
     );
   }
 }
