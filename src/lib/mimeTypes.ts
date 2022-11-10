@@ -2,8 +2,8 @@ import { extname } from "path";
 
 const MimeTypes = {
   png: "image/png",
-  jpg: "image/jpg",
-  jpeg: "image/jpg",
+  jpg: "image/jpeg",
+  jpeg: "image/jpeg",
   webp: "image/webp",
   gif: "image/gif",
   svg: "image/svg+xml",
