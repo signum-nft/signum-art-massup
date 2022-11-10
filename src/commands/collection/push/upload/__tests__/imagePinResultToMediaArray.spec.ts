@@ -66,7 +66,7 @@ describe("imagePinResultToMediaArray", () => {
       {
         social: "hash-00003.2-social",
         thumb: "hash-00003.2-thumb",
-        "hash-00003.2": "image/jpg",
+        "hash-00003.2": "image/jpeg",
       },
       {
         social: "hash-00003.3-social",
