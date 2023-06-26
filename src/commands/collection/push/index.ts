@@ -6,7 +6,6 @@ import { LedgerService } from "@lib/services/ledgerService";
 import ora from "ora";
 import { promptConfirm } from "@lib/promptConfirm";
 import { getStatistics } from "@commands/collection/getStatistics";
-import { Amount } from "@signumjs/util";
 import { verifyCollection } from "./verifyCollection";
 import { assertSufficientBalance } from "./assertSufficientBalance";
 import { assertFileExistence } from "./assertFileExistence";

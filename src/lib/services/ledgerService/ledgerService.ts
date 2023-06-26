@@ -3,6 +3,9 @@ import { NftService } from "./nftService";
 import { CollectionService } from "./collectionService";
 import { ProfileData } from "@lib/profileData";
 import { Amount } from "@signumjs/util";
+import { ContractList } from "@signumjs/core/out/typings/contractList";
+
+const MachineCodeHashSRC40 = "15155055045342098571";
 
 export class LedgerService {
   private readonly nftService: NftService;
