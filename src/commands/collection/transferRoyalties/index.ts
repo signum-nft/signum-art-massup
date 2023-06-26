@@ -106,6 +106,9 @@ export const transferRoyalties = async (opts: any, profile: ProfileData) => {
     console.info("🎉 Royalties transfers successfully requested");
     console.info("---------------------------------------------");
     console.info("");
+    if (opts.try) {
+      console.log("\n*** TRIAL run finished. Nothing submitted to network.\n");
+    }
     removeSync(transferProgressPath);
   } catch (e: any) {
     spinner.fail(e.message);
