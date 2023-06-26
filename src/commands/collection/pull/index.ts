@@ -2,7 +2,6 @@ import { ProfileData } from "@lib/profileData";
 import ora from "ora";
 import { createNetworkClient } from "@lib/networks";
 import { LedgerService } from "@lib/services/ledgerService";
-import { prompt } from "./prompt";
 import { ensureDirSync, writeJSONSync } from "fs-extra";
 import { join } from "path";
 import { printableTableObject } from "@lib/printableTableObject";
@@ -10,6 +9,7 @@ import { promptConfirm } from "@lib/promptConfirm";
 import { Filenames } from "@lib/constants";
 import { createCSVTemplate } from "@commands/collection/createCSVTemplate";
 import { FileLoggingService } from "@lib/services/loggingService";
+import { prompt } from "./prompt";
 
 export const pull = async (opts: any, profile: ProfileData) => {
   const logger = new FileLoggingService(join(process.cwd(), Filenames.PullLog));

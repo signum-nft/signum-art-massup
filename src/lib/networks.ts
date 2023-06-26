@@ -1,10 +1,10 @@
 import { Ledger, LedgerClientFactory } from "@signumjs/core";
+
 export const Networks = [
   {
     name: "Signum Main Net",
     hosts: [
       "https://europe.signum.network",
-      "https://localhost:8125",
       "https://europe1.signum.network",
       "https://europe2.signum.network",
       "https://latam.signum.network",
@@ -16,7 +16,7 @@ export const Networks = [
   },
   {
     name: "Signum Test Net",
-    hosts: ["https://europe3.testnet.signum.network", "https://localhost:6876"],
+    hosts: ["https://europe3.testnet.signum.network"],
   },
 ];
 
@@ -28,14 +28,32 @@ function getNetworkHosts(networkName: string): string[] {
   return found.hosts;
 }
 
+async function tryGetLocalHosts(networkName: string) {
+  const localHost =
+    networkName === "Signum Test Net"
+      ? "http://localhost:6876"
+      : "http://localhost:8125";
+  const client = LedgerClientFactory.createClient({
+    nodeHost: localHost,
+  });
+  await client.network.getNetworkInfo();
+  return client;
+}
+
 export const createNetworkClient = async (
   networkName: string
 ): Promise<Ledger> => {
-  const hosts = getNetworkHosts(networkName);
-  const ledger = LedgerClientFactory.createClient({
-    nodeHost: hosts[0],
-    reliableNodeHosts: hosts,
-  });
-  await ledger.service.selectBestHost(true);
+  let ledger: Ledger;
+  try {
+    ledger = await tryGetLocalHosts(networkName);
+  } catch (_) {
+    const hosts = getNetworkHosts(networkName);
+    ledger = LedgerClientFactory.createClient({
+      nodeHost: hosts[0],
+      reliableNodeHosts: hosts,
+    });
+    // this is not really reliable...
+    await ledger.service.selectBestHost(true);
+  }
   return ledger;
 };

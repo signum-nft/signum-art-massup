@@ -8,6 +8,16 @@ import { convertToContractBlockheight } from "@lib/services/ledgerService/conver
 import { ListingType } from "@lib/listingType";
 import pRetry from "p-retry";
 
+const NftConstants = {
+  Methods: {
+    TransferRoyalties: "7174296962751784077",
+  },
+  Fees: {
+    Interaction: Amount.fromSigna(0.01),
+    Activation: Amount.fromSigna(0.3),
+  },
+};
+
 interface CreateNftArgs {
   descriptorCid: string;
   auctionTimeout?: number; // minutes
@@ -21,6 +31,7 @@ interface CreateNftArgs {
 export class NftService {
   private readonly accountPublicKey: string;
   private readonly accountSignKey: string;
+
   constructor(private context: ServiceContext) {
     const { publicKey, signPrivateKey } = context.profile.getKeys();
     this.accountPublicKey = publicKey;
@@ -216,6 +227,21 @@ export class NftService {
         activationAmountPlanck,
         name: Contract.BaseName,
         data,
+      })
+    );
+  }
+
+  async transferRoyalties(nftId: string, newOwnerAccountId: string) {
+    const { ledger } = this.context;
+    return pRetry(() =>
+      ledger.contract.callContractMethod({
+        senderPublicKey: this.accountPublicKey,
+        senderPrivateKey: this.accountSignKey,
+        feePlanck: NftConstants.Fees.Interaction.getPlanck(),
+        amountPlanck: NftConstants.Fees.Activation.getPlanck(),
+        contractId: nftId,
+        methodHash: NftConstants.Methods.TransferRoyalties,
+        methodArgs: [newOwnerAccountId],
       })
     );
   }

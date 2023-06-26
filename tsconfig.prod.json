@@ -6,7 +6,7 @@
     "moduleResolution": "Node",
     "allowJs": true,
     "resolveJsonModule": true,
-    "declaration": true,
+    "declaration": false,
     "strict": true,
     "isolatedModules": true,
     "noImplicitAny": true,

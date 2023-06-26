@@ -3,6 +3,7 @@ import { init, reset, show } from "@commands/profile";
 import { ProfileData } from "@lib/profileData";
 import { create, commit, pull, push } from "@commands/collection";
 import inquirer from "inquirer";
+import { transferRoyalties } from "@commands/collection/transferRoyalties";
 const { version } = require("../package.json");
 
 interface ActionArgs {
@@ -160,6 +161,23 @@ collection
         opts,
         context: profileData,
         action: push,
+      })
+    )
+  );
+
+collection
+  .command("transfer-royalties")
+  .option(
+    "-t, --try",
+    "Runs without creating anything on chain. Good for testing"
+  )
+  .description("Transfers the royalties to a new owner")
+  .action((opts) =>
+    withProfile((profileData) =>
+      startAction({
+        opts,
+        context: profileData,
+        action: transferRoyalties,
       })
     )
   );

@@ -37,7 +37,7 @@ Usage: signumart-massup [options] [command]
          SignumArt Mass Upload Tool
 
   Author: ohager
-  Version: 1.0.0-beta
+  Version: 1.1.0
 
 
 Options:
@@ -123,6 +123,7 @@ create|init [options]     Creates a new Collection
 pull|continue             Pulls existing collection information to continue on adding new NFTs
 commit|prepare [options]  Prepares the collection for upload
 push|upload [options]     Uploads the collection
+transfer-royalties [options]  Transfers the royalties to a new owner
 help [command]            display help for command
 ```
 
