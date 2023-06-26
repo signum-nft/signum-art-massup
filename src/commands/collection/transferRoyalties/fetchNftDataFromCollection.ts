@@ -46,7 +46,7 @@ export async function fetchNftDataFromCollection(
     creatorId: profile.getAccountId(),
     nftIds: [] as string[],
   };
-  let searchUrl = `/api/items?collectionId=${collectionId}&creatorId=${profile.getAccountId()}&p=100`;
+  let searchUrl = `/api/items?collectionId=${collectionId}&creatorId=${profile.getAccountId()}&royaltiesOwnerId=${profile.getAccountId()}&p=100`;
   while (searchUrl) {
     const httpResponse = await pRetry(() => httpClient.get(searchUrl));
     if (httpResponse.status !== 200) {

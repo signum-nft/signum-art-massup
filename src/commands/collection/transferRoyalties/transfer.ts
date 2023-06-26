@@ -24,9 +24,8 @@ export async function transfer(args: TransferArgs) {
     let nextNftId = progress.nftIdsToProgress.pop();
     while (nextNftId) {
       logger.log(`Transferring Royalties Ownership for NFT ${nextNftId}...`);
-      if (isTrialRun) {
-        await sleep(100);
-      } else {
+      await sleep(100); // artificial delay, to avoid backpressure on (local) node
+      if (!isTrialRun) {
         await pRetry(() =>
           ledgerService.nft.transferRoyalties(nextNftId!, progress.newOwnerId)
         );
