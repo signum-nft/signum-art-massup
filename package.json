@@ -1,6 +1,6 @@
 {
   "name": "@signumart/massup",
-  "version": "1.0.3-beta",
+  "version": "1.1.0",
   "description": "Automate the upload of your https://signumart.io NFT collectibles.",
   "private": false,
   "engines": {

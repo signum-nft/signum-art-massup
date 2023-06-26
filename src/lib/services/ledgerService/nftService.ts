@@ -6,6 +6,7 @@ import { Constants } from "./constants";
 import { ServiceContext } from "@lib/services/ledgerService/serviceContext";
 import { convertToContractBlockheight } from "@lib/services/ledgerService/convertToContractBlockheight";
 import { ListingType } from "@lib/listingType";
+import pRetry from "p-retry";
 
 interface CreateNftArgs {
   descriptorCid: string;
@@ -27,10 +28,12 @@ export class NftService {
   }
 
   private async createInitialDataStack(args: CreateNftArgs) {
-    const { blocks } = await this.context.ledger.block.getBlocks(0, 1);
+    const { blocks } = await pRetry(() =>
+      this.context.ledger.block.getBlocks(0, 1)
+    );
     const currentBlockHeight = blocks[0].height;
 
-    const safeAmount = (amount: string = "0") =>
+    const safeAmount = (amount = "0") =>
       amount ? Amount.fromSigna(amount).getPlanck() : "0";
 
     /*
@@ -203,16 +206,18 @@ export class NftService {
       descriptor: args.descriptorCid,
     });
 
-    return ledger.contract.publishContractByReference({
-      senderPublicKey: this.accountPublicKey,
-      senderPrivateKey: this.accountSignKey,
-      description,
-      feePlanck: "40000000",
-      referencedTransactionHash,
-      activationAmountPlanck,
-      name: Contract.BaseName,
-      data,
-    });
+    return pRetry(() =>
+      ledger.contract.publishContractByReference({
+        senderPublicKey: this.accountPublicKey,
+        senderPrivateKey: this.accountSignKey,
+        description,
+        feePlanck: "40000000",
+        referencedTransactionHash,
+        activationAmountPlanck,
+        name: Contract.BaseName,
+        data,
+      })
+    );
   }
 
   private static calculateTimeoutValue(

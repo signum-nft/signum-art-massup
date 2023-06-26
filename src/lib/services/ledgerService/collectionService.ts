@@ -1,10 +1,4 @@
-import {
-  Address,
-  AttachmentMessage,
-  Transaction,
-  TransactionArbitrarySubtype,
-  TransactionType,
-} from "@signumjs/core";
+import { AttachmentMessage, Transaction } from "@signumjs/core";
 import { Amount } from "@signumjs/util";
 import { InputValidationService } from "./inputValidationService";
 import { Constants } from "./constants";
