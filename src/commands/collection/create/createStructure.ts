@@ -6,6 +6,7 @@ import { Filenames } from "@lib/constants";
 import { CollectionCreateAnswers } from "./prompt";
 import walkDirSync from "klaw-sync";
 import { FileLoggingService } from "@lib/services/loggingService";
+import { toValidPathname } from "@lib/toValidPathname";
 
 const verifyBannerExistence = (folderPath: string) => {
   const files = walkDirSync(folderPath, {
@@ -20,10 +21,7 @@ export const createStructure = async (
   logger: FileLoggingService
 ) => {
   logger.log("Creating Collection structure...");
-  const folderPath = join(
-    cwd(),
-    answers.name.trim().replace(/\s/g, "_").toLowerCase()
-  );
+  const folderPath = join(cwd(), toValidPathname(answers.name));
   ensureDirSync(folderPath);
   logger.log(`Collection folder [${folderPath}] created`);
   console.info(`Collection folder [${folderPath}] created`);

@@ -10,6 +10,7 @@ import { Filenames } from "@lib/constants";
 import { createCSVTemplate } from "@commands/collection/createCSVTemplate";
 import { FileLoggingService } from "@lib/services/loggingService";
 import { prompt } from "./prompt";
+import { toValidPathname } from "@lib/toValidPathname";
 
 export const pull = async (opts: any, profile: ProfileData) => {
   const logger = new FileLoggingService(join(process.cwd(), Filenames.PullLog));
@@ -33,10 +34,7 @@ export const pull = async (opts: any, profile: ProfileData) => {
     }
     spinner.start("Creating Meta Data Files");
     const cwd = process.cwd();
-    const collectionFolder = join(
-      cwd,
-      collectionInfo.name.trim().replace(/\s/g, "_").toLowerCase()
-    );
+    const collectionFolder = join(cwd, toValidPathname(collectionInfo.name));
     ensureDirSync(collectionFolder);
     writeJSONSync(
       join(collectionFolder, Filenames.Collection),
