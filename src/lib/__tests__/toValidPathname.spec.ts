@@ -10,5 +10,13 @@ describe("toValidPathname", () => {
     expect(
       toValidPathname("a very long weird^|😁 path name cutted down to 24 chars")
     ).toEqual("averylongweirdpathnamecu");
+    expect(toValidPathname("já tomei cerveja hoje?")).toEqual(
+      "jtomeicervejahoje"
+    );
+    expect(toValidPathname("har allerede drukket øl i dag")).toEqual(
+      "harallerededrukketlidag"
+    );
+    expect(toValidPathname("это русский текст")).toMatch(/collection\d+/);
+    expect(toValidPathname("这是一些俄文文本")).toMatch(/collection\d+/);
   });
 });
