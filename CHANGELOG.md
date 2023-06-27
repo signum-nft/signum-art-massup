@@ -1,3 +1,9 @@
+# 1.1.1
+
+## Bugfix
+
+- Valid collection path name (#5)
+
 # 1.1.0
 
 ## Features
